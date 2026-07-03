@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environment
+venv/
+
+# VS Code
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment Variables
+.env
+
+# Database
+*.bak
+*.mdf
+*.ldf
+
+# Logs
+*.log
+
+# Temporary Files
+*.tmp
