@@ -8,7 +8,6 @@ def get_csv_files(folder_path):
     """
     Returns a list of all CSV files in the specified folder.
     """
-
     csv_files = []
 
     for file in os.listdir(folder_path):
@@ -16,6 +15,43 @@ def get_csv_files(folder_path):
             csv_files.append(file)
 
     return csv_files
+
+
+def profile_dataset(file_path):
+    """
+    Reads a dataset and returns basic information.
+    """
+
+    df = pd.read_csv(file_path)
+
+    report = {
+        "Dataset": os.path.basename(file_path),
+        "Rows": df.shape[0],
+        "Columns": df.shape[1],
+        "Column Names": list(df.columns)
+    }
+
+    return report
+
+
+def display_report(report):
+    """
+    Displays the profiling report.
+    """
+
+    print("=" * 60)
+    print(f"Dataset : {report['Dataset']}")
+    print("=" * 60)
+
+    print(f"Rows    : {report['Rows']}")
+    print(f"Columns : {report['Columns']}")
+
+    print("\nColumn Names")
+
+    for column in report["Column Names"]:
+        print(f"- {column}")
+
+    print()
 
 
 def main():
@@ -32,7 +68,12 @@ def main():
     print(f"Found {len(csv_files)} datasets.\n")
 
     for file in csv_files:
-        print(file)
+
+        full_path = os.path.join(DATA_FOLDER, file)
+
+        report = profile_dataset(full_path)
+
+        display_report(report)
 
 
 if __name__ == "__main__":
