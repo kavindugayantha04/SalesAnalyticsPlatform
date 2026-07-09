@@ -2,9 +2,9 @@ import pandas as pd
 from db_connection import get_connection
 
 
-# ----------------------------------------
+
 # Helper Function
-# ----------------------------------------
+
 def sql_value(value, data_type):
     """
     Converts Pandas values into SQL-friendly values.
@@ -23,29 +23,29 @@ def sql_value(value, data_type):
     return value
 
 
-# ----------------------------------------
+
 # Read Products Dataset
-# ----------------------------------------
+
 df = pd.read_csv("data/raw/olist_products_dataset.csv")
 
 
-# ----------------------------------------
+
 # Connect to SQL Server
-# ----------------------------------------
+
 connection = get_connection()
 cursor = connection.cursor()
 
 
-# ----------------------------------------
+
 # Development Only
-# ----------------------------------------
+
 cursor.execute("DELETE FROM Products")
 connection.commit()
 
 
-# ----------------------------------------
+
 # SQL Insert Statement
-# ----------------------------------------
+
 sql = """
 INSERT INTO Products
 (
@@ -63,9 +63,9 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
 """
 
 
-# ----------------------------------------
+
 # Prepare Data
-# ----------------------------------------
+
 rows = [
 
     (
@@ -85,9 +85,9 @@ rows = [
 ]
 
 
-# ----------------------------------------
+
 # Bulk Insert
-# ----------------------------------------
+
 cursor.fast_executemany = True
 
 cursor.executemany(sql, rows)
@@ -97,8 +97,8 @@ connection.commit()
 print(f"{len(rows)} products inserted successfully!")
 
 
-# ----------------------------------------
+
 # Close Connection
-# ----------------------------------------
+
 cursor.close()
 connection.close()
