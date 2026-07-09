@@ -549,3 +549,27 @@ No missing values were found.
 - No missing values require cleaning.
 - No duplicate rows require removal.
 - Use English category names for reporting and Power BI dashboards.
+
+
+## Data Quality Issue Identified During ETL
+
+During ETL validation, two product categories found in the
+`olist_products_dataset.csv` were missing from the original
+`product_category_name_translation.csv` lookup table.
+
+Missing categories:
+
+- pc_gamer
+- portateis_cozinha_e_preparadores_de_alimentos
+
+Since the Products table enforces a foreign key relationship with
+ProductCategoryTranslation, these missing lookup values would prevent
+successful data loading.
+
+To preserve referential integrity and avoid data loss, the missing
+categories were added to the ProductCategoryTranslation table before
+loading the Products dataset.
+
+Original lookup records: **71**
+
+Final lookup records: **73**
