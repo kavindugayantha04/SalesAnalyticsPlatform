@@ -218,7 +218,7 @@ Stores product master data including category, dimensions, weight, and descripti
 
 | Column | Missing | Business Reason | ETL Action |
 |--------|---------:|----------------|------------|
-| product_category_name | 610 | Missing product classification | Fill with "Unknown Category" |
+| product_category_name | 610 | Missing product classification | Keep NULL|
 | product_name_lenght | 610 | Missing metadata | Keep NULL |
 | product_description_lenght | 610 | Missing metadata | Keep NULL |
 | product_photos_qty | 610 | Missing metadata | Keep NULL |
@@ -238,17 +238,17 @@ Stores product master data including category, dimensions, weight, and descripti
 | product_name_lenght | Float | INT |
 | product_description_lenght | Float | INT |
 | product_photos_qty | Float | INT |
-| product_weight_g | Float | FLOAT |
-| product_length_cm | Float | FLOAT |
-| product_height_cm | Float | FLOAT |
-| product_width_cm | Float | FLOAT |
+| product_weight_g | Float | DECIMAL(10,2) |
+| product_length_cm | Float | DECIMAL(10,2) |
+| product_height_cm | Float | DECIMAL(10,2) |
+| product_width_cm | Float | DECIMAL(10,2) |
 
 ---
 
 ## ETL Rules
 
 - Preserve all product records.
-- Replace missing product categories with **"Unknown Category"**.
+- Preserve missing product categories as NULL to maintain data integrity.
 - Convert numeric metadata columns to INTEGER where appropriate.
 - Investigate products missing physical dimensions before applying imputation.
 
