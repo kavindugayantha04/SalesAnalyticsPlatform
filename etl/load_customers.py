@@ -1,37 +1,19 @@
 import pandas as pd
-
-# Read CSV
-df = pd.read_csv("data/raw/olist_customers_dataset.csv")
-
-print(df.head())
-
-print("\nRows:", len(df))
-print("Columns:", len(df.columns))
-
-print("\nColumn Names")
-print(df.columns)
-
-print(df.isnull().sum())
-
 from db_connection import get_connection
 
+# Read customer dataset
+df = pd.read_csv("data/raw/olist_customers_dataset.csv")
+
+# Connect to SQL Server
 connection = get_connection()
 cursor = connection.cursor()
 
-# Prepare all rows for insertion
-rows = []
+# Development only: clear existing records
+cursor.execute("DELETE FROM Customers")
+connection.commit()
 
-for _, row in df.iterrows():
-    rows.append((
-        row["customer_id"],
-        row["customer_unique_id"],
-        int(row["customer_zip_code_prefix"]),
-        row["customer_city"],
-        row["customer_state"]
-    ))
-
-# Insert all customers
-cursor.executemany("""
+# SQL Insert statement
+sql = """
 INSERT INTO Customers
 (
     customer_id,
@@ -41,9 +23,24 @@ INSERT INTO Customers
     customer_state
 )
 VALUES (?, ?, ?, ?, ?)
-""", rows)
+"""
 
-# Save changes
+# Prepare data
+rows = [
+    (
+        row.customer_id,
+        row.customer_unique_id,
+        int(row.customer_zip_code_prefix),
+        row.customer_city,
+        row.customer_state
+    )
+    for row in df.itertuples(index=False)
+]
+
+# Faster bulk insert
+cursor.fast_executemany = True
+cursor.executemany(sql, rows)
+
 connection.commit()
 
 print(f"{len(rows)} customers inserted successfully!")
