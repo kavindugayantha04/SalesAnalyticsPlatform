@@ -2,9 +2,9 @@ import pandas as pd
 from db_connection import get_connection
 
 
-# ----------------------------------------
+
 # Helper Function
-# ----------------------------------------
+
 def sql_value(value):
     """
     Converts Pandas NaN values into SQL NULL.
@@ -14,9 +14,8 @@ def sql_value(value):
     return value
 
 
-# ----------------------------------------
 # Read Orders Dataset
-# ----------------------------------------
+
 df = pd.read_csv(
     "data/raw/olist_orders_dataset.csv",
     parse_dates=[
@@ -29,23 +28,22 @@ df = pd.read_csv(
 )
 
 
-# ----------------------------------------
 # Connect to SQL Server
-# ----------------------------------------
+
 connection = get_connection()
 cursor = connection.cursor()
 
 
-# ----------------------------------------
+
 # Development Only
-# ----------------------------------------
+
 cursor.execute("DELETE FROM Orders")
 connection.commit()
 
 
-# ----------------------------------------
+
 # SQL INSERT Statement
-# ----------------------------------------
+
 sql = """
 INSERT INTO Orders
 (
@@ -62,9 +60,9 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?)
 """
 
 
-# ----------------------------------------
+
 # Prepare Data
-# ----------------------------------------
+
 rows = [
 
     (
@@ -83,9 +81,8 @@ rows = [
 ]
 
 
-# ----------------------------------------
 # Bulk Insert
-# ----------------------------------------
+
 cursor.fast_executemany = True
 
 cursor.executemany(sql, rows)
@@ -95,8 +92,8 @@ connection.commit()
 print(f"{len(rows)} orders inserted successfully!")
 
 
-# ----------------------------------------
+
 # Close Connection
-# ----------------------------------------
+
 cursor.close()
 connection.close()
