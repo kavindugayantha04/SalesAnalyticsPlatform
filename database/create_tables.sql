@@ -103,16 +103,18 @@ GO
 
 CREATE TABLE Reviews
 (
+    review_key INT IDENTITY(1,1) NOT NULL,
+
     review_id VARCHAR(50) NOT NULL,
     order_id VARCHAR(50) NOT NULL,
-    review_score INT NOT NULL,
+    review_score TINYINT NOT NULL,
     review_comment_title NVARCHAR(255) NULL,
     review_comment_message NVARCHAR(MAX) NULL,
     review_creation_date DATETIME2 NOT NULL,
     review_answer_timestamp DATETIME2 NOT NULL,
 
     CONSTRAINT PK_Reviews
-        PRIMARY KEY (review_id),
+        PRIMARY KEY (review_key),
 
     CONSTRAINT FK_Reviews_Orders
         FOREIGN KEY (order_id)
