@@ -149,7 +149,15 @@ Payments.order_id
 
 Each completed order can receive one customer review.
 
+To preserve all review records from the original Olist dataset, the Reviews table uses a surrogate primary key (`review_key`) because the source data contains duplicate `review_id` values.
+
 **Primary Key**
+
+```
+Reviews.review_key
+```
+
+**Business Identifier**
 
 ```
 Reviews.review_id
