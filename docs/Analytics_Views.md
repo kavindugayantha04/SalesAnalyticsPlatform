@@ -66,3 +66,34 @@ Provides sales performance by product category, including revenue, sales volume,
 - Total Revenue
 - Total Items Sold
 - Average Product Price
+
+
+---
+
+## 4. vw_ProductPerformance
+
+### Purpose
+
+Provides sales performance for individual products, including revenue, sales volume, freight cost, and average selling price.
+
+### Source Tables
+
+- Products
+- OrderItems
+- ProductCategoryTranslation
+
+### Primary Use
+
+- Power BI Product Dashboard
+- Top-selling product analysis
+- Product demand analysis
+- AI chatbot product-related queries
+
+### Key Metrics
+
+- Total Orders
+- Total Items Sold
+- Total Product Sales
+- Total Freight
+- Total Revenue
+- Average Product Price
