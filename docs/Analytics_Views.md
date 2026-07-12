@@ -127,3 +127,31 @@ Provides customer-level purchasing performance by summarizing orders, revenue, f
 - Total Freight
 - Total Revenue
 - Average Order Value
+
+---
+
+## 6. vw_PaymentAnalysis
+
+### Purpose
+
+Provides payment performance by payment method, including payment volume, payment value, and installment analysis.
+
+### Source Table
+
+- Payments
+
+### Primary Use
+
+- Power BI Payment Dashboard
+- Payment trend analysis
+- Installment analysis
+- AI chatbot payment-related queries
+
+### Key Metrics
+
+- Total Payments
+- Total Orders
+- Total Installments
+- Average Installments
+- Total Payment Value
+- Average Payment Value
