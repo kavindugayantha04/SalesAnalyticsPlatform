@@ -155,3 +155,29 @@ Provides payment performance by payment method, including payment volume, paymen
 - Average Installments
 - Total Payment Value
 - Average Payment Value
+
+---
+
+## 7. vw_ReviewSummary
+
+### Purpose
+
+Provides customer review statistics by review score, including review counts, comment availability, and percentage distribution.
+
+### Source Table
+
+- Reviews
+
+### Primary Use
+
+- Power BI Customer Satisfaction Dashboard
+- Customer feedback analysis
+- Review score distribution
+- AI chatbot review-related queries
+
+### Key Metrics
+
+- Total Reviews
+- Reviews With Comments
+- Reviews Without Comments
+- Percentage of Reviews
