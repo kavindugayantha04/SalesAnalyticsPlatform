@@ -181,3 +181,33 @@ Provides customer review statistics by review score, including review counts, co
 - Reviews With Comments
 - Reviews Without Comments
 - Percentage of Reviews
+
+---
+
+## 8. vw_StateSales
+
+### Purpose
+
+Provides sales performance by customer state, including orders, items sold, revenue, freight, and average order value.
+
+### Source Tables
+
+- Customers
+- Orders
+- OrderItems
+
+### Primary Use
+
+- Power BI Geographic Dashboard
+- Regional sales analysis
+- State performance reporting
+- AI chatbot geographic queries
+
+### Key Metrics
+
+- Total Orders
+- Total Items Sold
+- Total Product Value
+- Total Freight
+- Total Revenue
+- Average Order Value
