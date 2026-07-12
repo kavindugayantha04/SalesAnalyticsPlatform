@@ -97,3 +97,33 @@ Provides sales performance for individual products, including revenue, sales vol
 - Total Freight
 - Total Revenue
 - Average Product Price
+
+---
+
+## 5. vw_CustomerSummary
+
+### Purpose
+
+Provides customer-level purchasing performance by summarizing orders, revenue, freight, purchased items, and average order value.
+
+### Source Tables
+
+- Customers
+- Orders
+- OrderItems
+
+### Primary Use
+
+- Power BI Customer Dashboard
+- Customer segmentation
+- Customer lifetime value analysis
+- AI chatbot customer-related queries
+
+### Key Metrics
+
+- Total Orders
+- Total Items Purchased
+- Total Product Sales
+- Total Freight
+- Total Revenue
+- Average Order Value
