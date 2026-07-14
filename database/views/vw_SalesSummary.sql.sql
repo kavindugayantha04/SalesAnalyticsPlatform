@@ -1,7 +1,7 @@
 USE SalesAnalytics_DB;
 GO
 
-CREATE VIEW vw_SalesSummary AS
+CREATE OR ALTER VIEW vw_SalesSummary AS
 
 SELECT
 
@@ -10,6 +10,7 @@ SELECT
     o.order_status,
 
     c.customer_id,
+    c.customer_unique_id,
     c.customer_city,
     c.customer_state,
 
@@ -22,10 +23,10 @@ SELECT
 
 FROM Orders o
 
-JOIN Customers c
+INNER JOIN Customers c
     ON o.customer_id = c.customer_id
 
-JOIN OrderItems oi
+INNER JOIN OrderItems oi
     ON o.order_id = oi.order_id
 
 GROUP BY
@@ -35,6 +36,7 @@ GROUP BY
     o.order_status,
 
     c.customer_id,
+    c.customer_unique_id,
     c.customer_city,
     c.customer_state;
 GO
