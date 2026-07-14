@@ -1,14 +1,13 @@
 USE SalesAnalytics_DB;
 GO
 
-CREATE VIEW vw_CustomerSummary AS
+CREATE OR ALTER VIEW vw_CustomerSummary AS
 
 SELECT
 
     c.customer_id,
-
+    c.customer_unique_id,
     c.customer_city,
-
     c.customer_state,
 
     COUNT(DISTINCT o.order_id) AS total_orders,
@@ -38,6 +37,7 @@ INNER JOIN OrderItems oi
 GROUP BY
 
     c.customer_id,
+    c.customer_unique_id,
     c.customer_city,
     c.customer_state;
 GO
