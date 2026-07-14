@@ -13,6 +13,8 @@ SELECT
 
     FORMAT(order_purchase_timestamp, 'yyyy-MM') AS year_month,
 
+    (YEAR(order_purchase_timestamp) * 100 + MONTH(order_purchase_timestamp)) AS year_month_sort,
+
     COUNT(order_id) AS total_orders,
 
     ROUND(SUM(total_order_value), 2) AS total_revenue,
