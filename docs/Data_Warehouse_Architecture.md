@@ -178,3 +178,5 @@ The warehouse can be extended by adding additional fact tables such as:
 without redesigning the existing dimensions.
 
 
+Warehouse Validation:
+The operational Orders table contains 99,441 orders, while the warehouse contains 98,665 distinct orders. Investigation showed that 773 orders had no associated order items and were therefore excluded because the FactSales table is modeled at the order-item grain. Additionally, one delivered order contained order items but no corresponding payment record, preventing assignment of a valid PaymentKey. This record was intentionally excluded to preserve referential integrity.
