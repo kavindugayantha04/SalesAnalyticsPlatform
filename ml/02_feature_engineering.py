@@ -40,20 +40,6 @@ print(
 )
 
 
-# Create Revenue Growth Feature
-
-df["RevenueGrowthRate"] = df["MonthlyRevenue"].pct_change()
-
-print(
-    df[
-        [
-            "YearMonth",
-            "MonthlyRevenue",
-            "RevenueGrowthRate"
-        ]
-    ].head(8)
-)
-
 
 # Check Missing Values After Feature Engineering
 
