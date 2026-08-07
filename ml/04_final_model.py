@@ -21,8 +21,6 @@ X = df[
         "YearNumber",
         "MonthNumber",
         "Quarter",
-        "TotalOrders",
-        "AverageOrderValue",
         "PreviousMonthRevenue"
     ]
 ]
