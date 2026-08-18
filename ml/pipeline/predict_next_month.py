@@ -2,7 +2,7 @@ import joblib
 import pandas as pd
 
 from etl.db_connection import get_connection
-from sklearn.preprocessing import StandardScaler
+
 
 # Connect to SQL Server
 connection = get_connection()
@@ -23,21 +23,7 @@ df = pd.read_sql(query, connection)
 connection.close()
 
 print("\nMonthly Revenue Loaded Successfully")
-print(f"Rows Before Filtering : {len(df)}")
-
-# Remove Known Incomplete Historical Data
-
-df = df[
-    ~(
-        (df["YearNumber"] == 2016)
-        |
-        (
-            (df["YearNumber"] == 2018)
-            & (df["MonthNumber"] == 9)
-            & (df["TotalOrders"] == 1)
-        )
-    )
-].copy()
+print(f"Valid ML Months Loaded : {len(df)}")
 
 print("\nValid Monthly Data")
 
@@ -46,6 +32,8 @@ print(df[[
     "MonthlyRevenue",
     "TotalOrders"
 ]])
+
+
 
 # Identify Latest Valid Month
 
@@ -61,8 +49,6 @@ print(f"Year    : {latest_month['YearNumber']}")
 print(f"Month   : {latest_month['MonthNumber']}")
 print(f"Revenue : {latest_month['MonthlyRevenue']}")
 
-
-print(f"Revenue : {latest_month['MonthlyRevenue']}")
 
 # Determine Next Month
 

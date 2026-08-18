@@ -39,29 +39,16 @@ print(f"Rows Before Filtering : {len(df)}")
 
 
 
-# Remove Known Incomplete Historical Data
 
 
-df = df[
-    ~(
-        (df["YearNumber"] == 2016)
-        |
-        (
-            (df["YearNumber"] == 2018)
-            & (df["MonthNumber"] == 9)
-            & (df["TotalOrders"] == 1)
-        )
-    )
-].copy()
+# Historical incomplete records have already been excluded
+# by dw.vw_MonthlyRevenueML using dw.MLExcludedOrders.
 
-print("\nKnown Incomplete Historical Data Removed")
+print("\nMonthly Revenue Loaded Successfully")
+print(f"ML Training Rows Loaded : {len(df)}")
 
-print(f"Rows After Filtering : {len(df)}")
-
-print("\nRemaining Months")
-
+print("\nTraining Months")
 print(df[["YearMonth", "TotalOrders"]])
-
 
 
 # Feature Engineering
