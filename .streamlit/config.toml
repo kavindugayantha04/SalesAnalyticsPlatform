@@ -1,0 +1,5 @@
+# Hide Streamlit's automatic pages/ sidebar so the custom radio
+# navigation in app.py is the only menu.
+
+[client]
+showSidebarNavigation = false
