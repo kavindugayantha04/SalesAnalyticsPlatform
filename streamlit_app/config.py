@@ -226,6 +226,67 @@ NAV_PAGE_KEY = "nav_page"
 
 
 # ============================================================
+# AI ASSISTANT (GEMINI)
+# ============================================================
+
+# Official Google GenAI SDK model id. Do not substitute another model.
+# gemini-2.5-flash is refused with HTTP 404 for keys that were not already
+# using it. Free-tier quota is 20 requests per day per model, so this alias
+# also keeps a bucket separate from any earlier testing.
+
+GEMINI_MODEL = "gemini-flash-lite-latest"
+
+# Read from Streamlit secrets (.streamlit/secrets.toml) or the process
+# environment. Never hard-code a key in source control.
+
+GEMINI_API_KEY_NAME = "GEMINI_API_KEY"
+
+AI_CHAT_HISTORY_KEY = "ai_assistant_messages"
+
+# Repeated identical questions are served from session state so re-asking
+# costs no Gemini requests against the free-tier daily quota.
+AI_ANSWER_CACHE_KEY = "ai_assistant_answer_cache"
+
+AI_MAX_RESULT_ROWS = 100
+
+AI_MAX_MODEL_ROWS = 50
+
+# pyodbc query timeout for assistant SELECTs, in seconds.
+AI_SQL_TIMEOUT_SECONDS = 15
+
+# google-genai HTTP timeout, in milliseconds.
+AI_GEMINI_TIMEOUT_MS = 45000
+
+# Google's API hostname resolves to IPv6 addresses first. Where IPv6 has no
+# working route each attempt burns the OS connect timeout before IPv4 is
+# tried, which alone exceeds AI_GEMINI_TIMEOUT_MS. Set to False on hosts with
+# working IPv6.
+AI_GEMINI_FORCE_IPV4 = True
+
+WAREHOUSE_TIMEOUT_MESSAGE = (
+    "Warehouse query timed out. Please try a more specific question. "
+    "The first run of a new query shape can be slower while SQL Server "
+    "builds its plan, so asking again often succeeds."
+)
+
+AI_EXAMPLE_QUESTIONS = (
+    "What is our total revenue?",
+    "Which state generated the highest revenue?",
+    "What are the top 10 product categories?",
+    "What was revenue in August 2018?",
+    "What is the latest revenue forecast?",
+)
+
+UNSUPPORTED_QUESTION_MESSAGE = (
+    "I can help with sales, revenue, products, customers, sellers, "
+    "payments and revenue forecasting. Please ask a business question "
+    "related to the Sales Analytics Platform."
+)
+
+MISSING_GEMINI_KEY_MESSAGE = "Gemini API key is not configured yet."
+
+
+# ============================================================
 # QUERY BEHAVIOUR
 # ============================================================
 

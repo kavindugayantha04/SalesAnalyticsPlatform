@@ -13,6 +13,7 @@ venv/
 
 # Environment Variables
 .env
+.streamlit/secrets.toml
 
 # Database
 *.bak

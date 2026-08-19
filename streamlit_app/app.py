@@ -18,6 +18,7 @@ from components.kpis import render_kpi_cards
 from pages.power_bi import render as render_power_bi_page
 from pages.revenue_forecast import render as render_revenue_forecast_page
 from pages.monthly_upload import render as render_monthly_upload_page
+from pages.ai_assistant import render as render_ai_assistant_page
 from utils.formatting import format_compact_number, format_currency
 
 
@@ -280,6 +281,12 @@ def main():
     if selected_page == "Monthly Upload":
 
         render_monthly_upload_page()
+
+        return
+
+    if selected_page == "AI Assistant":
+
+        render_ai_assistant_page()
 
         return
 
